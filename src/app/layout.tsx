@@ -1,5 +1,8 @@
 import '@global/styles/normalize.scss'
-import type { Metadata } from 'next'
+
+import { rubik, nunito } from '@/global/fonts'
+import { Metadata } from 'next'
+import clsx from 'clsx'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -12,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="ru">
+      <body className={clsx(rubik.variable, nunito.variable)}>{children}</body>
     </html>
   )
 }

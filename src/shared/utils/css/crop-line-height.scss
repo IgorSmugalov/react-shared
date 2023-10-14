@@ -1,0 +1,24 @@
+// Text Line Height Crop Util
+// http://text-crop.eightshapes.com/
+// Добавляет отрицаельные отступы перед и после текстового блока, чтобы компенсировать отступы при line-height > 1 : это позволяет позиционировать следующий элемент на странице не от края этого блока, а от реальной границы текстовых символов внутри него.
+
+@mixin textCrop($crop-font-size, $top-crop, $bottom-crop) {
+  $dynamicTopCrop: max(($top-crop), 0) / $crop-font-size;
+  $dynamicBottomCrop: max($bottom-crop, 0) / $crop-font-size;
+
+  &::before,
+  &::after {
+    display: block;
+    width: 0;
+    height: 0;
+    content: '';
+  }
+
+  &::before {
+    margin-bottom: calc(-#{$dynamicTopCrop}em);
+  }
+
+  &::after {
+    margin-top: calc(-#{$dynamicBottomCrop}em);
+  }
+}
