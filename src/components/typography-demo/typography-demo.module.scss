@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  max-width: 1400px;
+  height: 100dvh;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 2rem;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.test {
+  font-size: 10rem;
+}

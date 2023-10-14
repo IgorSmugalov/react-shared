@@ -1,0 +1,45 @@
+import { Canvas, Meta, Controls, ArgTypes } from '@storybook/blocks'
+
+import * as TypographyStories from './typography.stories.tsx'
+import * as HeadingStories from './heading.stories.tsx'
+
+<Meta of={TypographyStories} />
+
+# Typography UI component
+
+This is a set of customisabled components used to design texts
+
+<Canvas of={TypographyStories.Demo} />
+
+## Includes:
+
+- **Heading** for h1 - h6 tags
+- **SubHeadings** for adding to headings or highlight important parts of text
+- **Body** regular text
+- In plans: **Typography for buttons, Typography for links**
+
+## Features:
+
+- **Compound Components Pattern** for best reusability and simplify component configuration
+- **CSS Clamp** for fluid typography
+
+## How use:
+
+### Approach 1:
+
+Use individual components with customizability in-place:
+
+<Canvas of={HeadingStories.Heading} />
+
+### Approach 2:
+
+Use components wrapped by TypographyContext
+
+- Wrap all components by `<Typography>{...components}</Typography>`
+- Set general props to: `<Typography {...props}>`
+
+<Canvas of={TypographyStories.WithContext} />
+
+- Set specific props / styles to any component inside context, that props has higher priority: `<Heading lvl={1} color={white} className={...}>`
+
+<Canvas of={TypographyStories.WithContextAndPropsRedefinition} />

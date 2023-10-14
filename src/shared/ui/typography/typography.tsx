@@ -27,7 +27,7 @@ export type ComposedComponentProps = TypographyForComponentProps &
 
 export const TypographyContext = createContext<TypographyUniversalProps>({})
 
-const Typography: FC<ComposedComponentProps> = ({
+const TypographyRoot: FC<ComposedComponentProps> = ({
   children,
   className,
   ...contextProps
@@ -47,7 +47,7 @@ export interface HeadingProps extends ComposedComponentProps {
   lvl: HeadingLevels
 }
 
-const Heading: FC<HeadingProps> = (props) => {
+export const Heading: FC<HeadingProps> = (props) => {
   const [{ lvl, children }, universalStyles] = useHeadingProps(props)
   const HeadingTag: keyof JSX.IntrinsicElements = `h${lvl}`
   return (
@@ -71,7 +71,9 @@ export interface SubHeadingProps extends ComposedComponentProps {
   variant: SubHeadingVariants
 }
 
-const SubHeading: FC<SubHeadingProps & TypographyUniversalProps> = (props) => {
+export const SubHeading: FC<SubHeadingProps & TypographyUniversalProps> = (
+  props
+) => {
   const [{ children, variant }, universalStyles] = useSubHeadingProps(props)
   return (
     <p
@@ -88,17 +90,15 @@ const SubHeading: FC<SubHeadingProps & TypographyUniversalProps> = (props) => {
 
 // Text
 
-const Body: FC<ComposedComponentProps> = (props) => {
+export const Body: FC<ComposedComponentProps> = (props) => {
   const [{ children }, universalStyles] = useBodyProps(props)
   return <p className={clsx(styles.body, universalStyles)}>{children}</p>
 }
 
 // Exports
 
-const TypographyNamespace = Object.assign(Typography, {
+export const Typography = Object.assign(TypographyRoot, {
   Heading,
   SubHeading,
   Body,
 })
-
-export { TypographyNamespace as Typography }

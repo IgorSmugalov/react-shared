@@ -37,29 +37,35 @@ const usePropsMerge = <T extends ComposedComponentProps>(
   return [mergedProps, universalStyles]
 }
 
+export const headingDefaultProps: Partial<HeadingProps> = {
+  align: 'center',
+  color: 'black',
+  transform: 'uppercase',
+  cropLineHeight: false,
+  font: 'nunito',
+}
+
 export const useHeadingProps = (headingProps: HeadingProps) =>
-  usePropsMerge(headingProps, {
-    align: 'center',
-    color: 'black',
-    transform: 'uppercase',
-    cropLineHeight: false,
-    font: 'nunito',
-  })
+  usePropsMerge(headingProps, headingDefaultProps)
+
+export const subHeaderDefaultProps: Partial<SubHeadingProps> = {
+  align: 'center',
+  color: 'black',
+  transform: 'uppercase',
+  cropLineHeight: false,
+  font: 'nunito',
+}
 
 export const useSubHeadingProps = (headingProps: SubHeadingProps) =>
-  usePropsMerge(headingProps, {
-    align: 'center',
-    color: 'black',
-    transform: 'uppercase',
-    cropLineHeight: false,
-    font: 'nunito',
-  })
+  usePropsMerge(headingProps, subHeaderDefaultProps)
+
+export const bodyDefaultProps: Partial<ComposedComponentProps> = {
+  align: 'left',
+  color: 'black',
+  transform: 'none',
+  cropLineHeight: false,
+  font: 'rubik',
+}
 
 export const useBodyProps = (headingProps: ComposedComponentProps) =>
-  usePropsMerge(headingProps, {
-    align: 'left',
-    color: 'black',
-    transform: 'none',
-    cropLineHeight: false,
-    font: 'rubik',
-  })
+  usePropsMerge(headingProps, bodyDefaultProps)
