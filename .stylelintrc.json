@@ -4,14 +4,15 @@
     "stylelint-config-idiomatic-order",
     "stylelint-config-standard",
     "stylelint-config-standard-scss",
-    "stylelint-config-css-modules",
-    "stylelint-config-sass-guidelines"
+    "stylelint-config-sass-guidelines",
+    "stylelint-config-css-modules"
   ],
   "rules": {
     "selector-class-pattern": [
       "^[a-z][a-zA-Z0-9_]+$",
       { "resolveNestedSelectors": true }
     ],
+    "custom-property-pattern": "^(--)?[a-z][a-zA-Z0-9_]+$",
     "scss/dollar-variable-pattern": "^[a-z][a-zA-Z0-9_]+$",
     "scss/at-mixin-pattern": "^[a-z][a-zA-Z0-9_]+$",
     "max-nesting-depth": [

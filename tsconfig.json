@@ -16,11 +16,15 @@
     "plugins": [
       {
         "name": "next"
+      },
+      {
+        "name": "typescript-plugin-css-modules"
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@global/*": ["./src/global/*"]
+      "@global/*": ["./src/global/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@/*": ["./src/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
