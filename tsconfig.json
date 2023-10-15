@@ -17,9 +17,6 @@
       {
         "name": "next"
       },
-      {
-        "name": "typescript-plugin-css-modules"
-      }
     ],
     "paths": {
       "@global/*": ["./src/global/*"],
