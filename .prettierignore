@@ -4,6 +4,7 @@
 .stylelintignore
 .eslintignore
 .husky
+.github
 node_modules
 package-lock.json
 public
