@@ -1,9 +1,25 @@
-import { TypographyDemo } from '@/components/typography-demo'
+'use client'
+
+import { Typography } from '@shared/ui'
 
 export default function Home() {
   return (
-    <main>
-      <TypographyDemo />
+    <main
+      style={{
+        display: 'flex',
+        height: '100dvh',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <a
+        href="https://igorsmugalov.github.io/react-ui"
+        style={{ textDecoration: 'none' }}
+      >
+        <Typography.SubHeading variant={'primary'}>
+          Go to Doc and Demo
+        </Typography.SubHeading>
+      </a>
     </main>
   )
 }
