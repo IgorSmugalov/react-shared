@@ -1,5 +1,11 @@
 .next
 .storybook
+.prettierignore
+.stylelintignore
+.eslintignore
+.husky
 node_modules
 package-lock.json
 public
+coverage
+storybook-static
