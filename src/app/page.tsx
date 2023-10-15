@@ -1,8 +1,6 @@
 'use client'
 
-import { Typography } from "@shared/ui"
-
-const a = 0
+import { Typography } from '@shared/ui'
 
 export default function Home() {
   return (
