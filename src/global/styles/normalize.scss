@@ -52,8 +52,8 @@ h1 {
 
 hr {
   overflow: visible; /* 2 */
-  height: 0; /* 1 */
   box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
 }
 
 /**
@@ -85,10 +85,10 @@ a {
 
 /* stylelint-disable-next-line selector-no-qualifying-type */
 abbr[title] {
-  /* stylelint-disable-next-line declaration-property-value-disallowed-list */
-  border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
   text-decoration: underline dotted; /* 2 */
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list */
+  border-bottom: none; /* 1 */
 }
 
 /**
@@ -245,9 +245,11 @@ fieldset {
 
 legend {
   display: table; /* 1 */
-  max-width: 100%; /* 1 */
+
   box-sizing: border-box; /* 1 */
+  max-width: 100%; /* 1 */
   padding: 0; /* 3 */
+
   color: inherit; /* 2 */
   white-space: normal; /* 1 */
 }
@@ -312,8 +314,8 @@ textarea {
  */
 
 ::-webkit-file-upload-button {
-  appearance: button; /* 1 */
   font: inherit; /* 2 */
+  appearance: button; /* 1 */
 }
 
 /* Interactive
