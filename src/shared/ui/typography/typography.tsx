@@ -1,13 +1,13 @@
 'use client'
 
-import { FC, ReactNode, createContext } from 'react'
-import clsx from 'clsx'
+import React, { FC, ReactNode, createContext } from 'react'
 import styles from './typography.module.scss'
 import {
   useBodyProps,
   useHeadingProps,
   useSubHeadingProps,
 } from './typography.hooks'
+import { styler } from '@shared/utils'
 
 interface TypographyUniversalProps {
   align?: 'center' | 'left' | 'right'
@@ -48,16 +48,10 @@ export interface HeadingProps extends ComposedComponentProps {
 }
 
 export const Heading: FC<HeadingProps> = (props) => {
-  const [{ lvl, children }, universalStyles] = useHeadingProps(props)
-  const HeadingTag: keyof JSX.IntrinsicElements = `h${lvl}`
+  const { children, ...styledProps } = useHeadingProps(props)
+  const HeadingTag: keyof React.JSX.IntrinsicElements = `h${styledProps.lvl}`
   return (
-    <HeadingTag
-      className={clsx(
-        styles.heading,
-        styles[`heading_${lvl}`],
-        universalStyles
-      )}
-    >
+    <HeadingTag className={styler(styles, 'heading', styledProps)}>
       {children}
     </HeadingTag>
   )
@@ -74,25 +68,15 @@ export interface SubHeadingProps extends ComposedComponentProps {
 export const SubHeading: FC<SubHeadingProps & TypographyUniversalProps> = (
   props
 ) => {
-  const [{ children, variant }, universalStyles] = useSubHeadingProps(props)
-  return (
-    <p
-      className={clsx(
-        styles.subHeading,
-        styles[`subHeading_${variant}`],
-        universalStyles
-      )}
-    >
-      {children}
-    </p>
-  )
+  const { children, ...styledProps } = useSubHeadingProps(props)
+  return <p className={styler(styles, 'subHeading', styledProps)}>{children}</p>
 }
 
 // Text
 
 export const Body: FC<ComposedComponentProps> = (props) => {
-  const [{ children }, universalStyles] = useBodyProps(props)
-  return <p className={clsx(styles.body, universalStyles)}>{children}</p>
+  const { children, ...styledProps } = useBodyProps(props)
+  return <p className={styler(styles, 'body', styledProps)}>{children}</p>
 }
 
 // Exports
