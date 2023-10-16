@@ -1,12 +1,90 @@
 @import '/src/global/styles/variables';
 @import '/src/shared/utils/css/crop-line-height';
 
-// Fonts
+@mixin colors {
+  &__color {
+    &_black {
+      color: $colorBlack;
+    }
 
-@mixin rubikFont {
-  font-family: $fontRubik;
+    &_white {
+      color: $colorWhite;
+    }
 
-  &.cropLineHeight {
+    &_waterBlue {
+      color: $colorWaterBlue;
+    }
+
+    &_success {
+      color: $colorSuccess;
+    }
+
+    &_error {
+      color: $colorError;
+    }
+  }
+}
+
+@mixin align {
+  &__align {
+    &_left {
+      text-align: left;
+    }
+
+    &_center {
+      text-align: center;
+    }
+
+    &_right {
+      text-align: right;
+    }
+  }
+}
+
+@mixin transform {
+  &__transform {
+    &_uppercase {
+      text-transform: uppercase;
+    }
+
+    &_lowercase {
+      text-transform: lowercase;
+    }
+
+    &_capitalize {
+      text-transform: capitalize;
+    }
+
+    &_none {
+      text-transform: none;
+    }
+  }
+}
+
+@mixin fonts {
+  &__font {
+    &_nunito {
+      font-family: $fontNunito;
+    }
+
+    &_rubik {
+      font-family: $fontRubik;
+    }
+  }
+}
+
+@mixin cropLineHeight {
+  @at-root #{&}__cropLineHeight#{&}__font_nunito {
+    // convert to &__cropLineHeight.&__font_nunito, example: heading__cropLineHeight.heading____font_nunito . Make it possible to strictly apply styles when there are two classes
+    $topCrop: 4;
+    $bottomCrop: 5;
+    $cropFontSize: 16;
+
+    @include textCrop($cropFontSize, $topCrop, $bottomCrop);
+  }
+
+  @at-root #{&}__cropLineHeight#{&}__font_rubik {
+    // in this case rubik and nunito has similar crop params, left as an example
     $topCrop: 4;
     $bottomCrop: 5;
     $cropFontSize: 16;
@@ -14,139 +92,81 @@
     @include textCrop($cropFontSize, $topCrop, $bottomCrop);
   }
 }
-
-@mixin nunitoFont {
-  font-family: $fontNunito;
-
-  &.cropLineHeight {
-    $topCrop: 4;
-    $bottomCrop: 5;
-    $cropFontSize: 16;
-
-    @include textCrop($cropFontSize, $topCrop, $bottomCrop);
-  }
-}
-
-.font {
-  &_nunito {
-    @include nunitoFont;
-  }
-
-  &_rubik {
-    @include rubikFont;
-  }
-}
-
-// Components styles
 
 .heading {
+  @include align;
+  @include colors;
+  @include transform;
+  @include fonts;
+  @include cropLineHeight;
+
   margin: 0;
   line-height: 1.3;
 
-  &_1 {
-    font-size: clamp(3.4331rem, 2.529rem + 4.5207vw, 6.0325rem);
-    font-weight: 300;
-  }
+  &__lvl {
+    &_1 {
+      font-size: clamp(3.4331rem, 2.529rem + 4.5207vw, 6.0325rem);
+      font-weight: 300;
+    }
 
-  &_2 {
-    font-size: clamp(2.7469rem, 2.1706rem + 2.8815vw, 4.4037rem);
-    font-weight: 300;
-  }
+    &_2 {
+      font-size: clamp(2.7469rem, 2.1706rem + 2.8815vw, 4.4037rem);
+      font-weight: 300;
+    }
 
-  &_3 {
-    font-size: clamp(2.1975rem, 1.8438rem + 1.7685vw, 3.2144rem);
-    font-weight: 300;
-  }
+    &_3 {
+      font-size: clamp(2.1975rem, 1.8438rem + 1.7685vw, 3.2144rem);
+      font-weight: 300;
+    }
 
-  &_4 {
-    font-size: clamp(1.7581rem, 1.5536rem + 1.0228vw, 2.3463rem);
-    font-weight: 400;
-  }
+    &_4 {
+      font-size: clamp(1.7581rem, 1.5536rem + 1.0228vw, 2.3463rem);
+      font-weight: 400;
+    }
 
-  &_5 {
-    font-size: clamp(1.4063rem, 1.2997rem + 0.5326vw, 1.7125rem);
-    font-weight: 400;
-  }
+    &_5 {
+      font-size: clamp(1.4063rem, 1.2997rem + 0.5326vw, 1.7125rem);
+      font-weight: 400;
+    }
 
-  &_6 {
-    font-size: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
-    font-weight: 500;
+    &_6 {
+      font-size: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+      font-weight: 500;
+    }
   }
 }
 
 .subHeading {
+  @include align;
+  @include colors;
+  @include transform;
+  @include fonts;
+  @include cropLineHeight;
+
   margin: 0;
   line-height: 1.3;
 
-  &_primary {
-    font-size: clamp(1.4063rem, 1.2997rem + 0.5326vw, 1.7125rem);
-    font-weight: 300;
-  }
+  &__variant {
+    &_primary {
+      font-size: clamp(1.4063rem, 1.2997rem + 0.5326vw, 1.7125rem);
+      font-weight: 300;
+    }
 
-  &_secondary {
-    font-size: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
-    font-weight: 600;
+    &_secondary {
+      font-size: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+      font-weight: 600;
+    }
   }
 }
 
 .body {
+  @include align;
+  @include colors;
+  @include transform;
+  @include fonts;
+  @include cropLineHeight;
+
   margin: 0;
   font-size: 1rem;
   line-height: 1.4;
-}
-
-// Universal styling
-
-.color {
-  &_black {
-    color: $colorBlack;
-  }
-
-  &_white {
-    color: $colorWhite;
-  }
-
-  &_waterBlue {
-    color: $colorWaterBlue;
-  }
-
-  &_success {
-    color: $colorSuccess;
-  }
-
-  &_error {
-    color: $colorError;
-  }
-}
-
-.align {
-  &_left {
-    text-align: left;
-  }
-
-  &_center {
-    text-align: center;
-  }
-
-  &_right {
-    text-align: right;
-  }
-}
-
-.transform {
-  &_uppercase {
-    text-transform: uppercase;
-  }
-
-  &_lowercase {
-    text-transform: lowercase;
-  }
-
-  &_capitalize {
-    text-transform: capitalize;
-  }
-
-  &_none {
-    text-transform: none;
-  }
 }

@@ -21,6 +21,8 @@ const config: StorybookConfig = {
       config.resolve.alias = {
         ...config.resolve.alias,
         '@': path.resolve(__dirname, '../', 'src'),
+        '@global': path.resolve(__dirname, '../', 'src', 'global'),
+        '@shared': path.resolve(__dirname, '../', 'src', 'shared')
       }
     }
     return config
