@@ -13,7 +13,7 @@ export default function Home() {
       }}
     >
       <a
-        href="https://igorsmugalov.github.io/react-ui"
+        href="https://igorsmugalov.github.io/react-shared"
         style={{ textDecoration: 'none' }}
       >
         <Typography.SubHeading variant={'primary'}>
