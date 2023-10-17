@@ -9,7 +9,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "prettier --check . && stylelint --aei \"**/*.{css,scss}\" && next lint",
-    "format": "prettier --write . && stylelint \"**/*.{css,scss}\" --fix"
+    "format": "prettier --write . && stylelint \"**/*.{css,scss}\" --fix",
+    "plop": "plop"
   },
   "dependencies": {
     "next": "13.5.4",
@@ -35,6 +36,7 @@
     "eslint-config-next": "13.5.4",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-storybook": "^0.6.15",
+    "plop": "^4.0.0",
     "prettier": "^3.0.3",
     "sass": "^1.69.3",
     "storybook": "^7.4.6",

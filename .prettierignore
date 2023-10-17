@@ -5,6 +5,7 @@
 .eslintignore
 .husky
 .github
+.plop
 node_modules
 package-lock.json
 public
