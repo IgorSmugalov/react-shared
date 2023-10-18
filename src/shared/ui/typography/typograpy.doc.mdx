@@ -1,4 +1,4 @@
-import { Canvas, Meta, Controls, ArgTypes } from '@storybook/blocks'
+import { Canvas, Meta } from '@storybook/blocks'
 
 import * as TypographyStories from './typography.stories.tsx'
 import * as HeadingStories from './heading.stories.tsx'
@@ -38,8 +38,8 @@ Use components wrapped by TypographyContext
 - Wrap all components by `<Typography>{...components}</Typography>`
 - Set general props to: `<Typography {...props}>`
 
-<Canvas of={TypographyStories.WithContext} />
+<Canvas of={TypographyStories.DemoWithContext} />
 
 - Set specific props / styles to any component inside context, that props has higher priority: `<Heading lvl={1} color={white} className={...}>`
 
-<Canvas of={TypographyStories.WithContextAndPropsRedefinition} />
+<Canvas of={TypographyStories.DemoWithContextAndPropsRedefinition} />

@@ -1,1 +1,1 @@
-export * from './styler'
+export * from './propsStyler'

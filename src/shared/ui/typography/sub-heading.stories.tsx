@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Typography } from '..'
-import { subHeaderDefaultProps } from '../typography.hooks'
+import { Typography } from './index'
+import { subHeaderDefaultProps } from './typography.hooks'
 
 const { SubHeading: SH } = Typography
 
 const meta = {
-  title: 'UI/Typography',
   component: SH,
   parameters: {
     layout: 'fullscreen',

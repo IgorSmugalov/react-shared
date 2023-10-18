@@ -1,0 +1,21 @@
+@import '/src/global/styles/variables';
+
+@mixin colors {
+  &_color {
+    &_black {
+      color: $colorBlack;
+    }
+
+    &_white {
+      color: $colorWhite;
+    }
+
+    &_success {
+      color: $colorSuccess;
+    }
+
+    &_error {
+      color: $colorError;
+    }
+  }
+}

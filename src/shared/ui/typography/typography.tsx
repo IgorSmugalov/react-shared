@@ -7,12 +7,14 @@ import {
   useHeadingProps,
   useSubHeadingProps,
 } from './typography.hooks'
-import { styler } from '@shared/utils'
+import { bindPropsStyler } from '@shared/utils'
+
+const styler = bindPropsStyler(styles)
 
 interface TypographyUniversalProps {
   align?: 'center' | 'left' | 'right'
   transform?: 'none' | 'uppercase' | 'lowercase' | 'capitalize'
-  color?: 'black' | 'white' | 'waterBlue' | 'success' | 'error'
+  color?: 'black' | 'white' | 'success' | 'error'
   font?: 'nunito' | 'rubik'
   cropLineHeight?: boolean
 }
@@ -51,7 +53,7 @@ export const Heading: FC<HeadingProps> = (props) => {
   const { children, ...styledProps } = useHeadingProps(props)
   const HeadingTag: keyof React.JSX.IntrinsicElements = `h${styledProps.lvl}`
   return (
-    <HeadingTag className={styler(styles, 'heading', styledProps)}>
+    <HeadingTag className={styler('heading', styledProps)}>
       {children}
     </HeadingTag>
   )
@@ -69,14 +71,14 @@ export const SubHeading: FC<SubHeadingProps & TypographyUniversalProps> = (
   props
 ) => {
   const { children, ...styledProps } = useSubHeadingProps(props)
-  return <p className={styler(styles, 'subHeading', styledProps)}>{children}</p>
+  return <p className={styler('subHeading', styledProps)}>{children}</p>
 }
 
 // Text
 
 export const Body: FC<ComposedComponentProps> = (props) => {
   const { children, ...styledProps } = useBodyProps(props)
-  return <p className={styler(styles, 'body', styledProps)}>{children}</p>
+  return <p className={styler('body', styledProps)}>{children}</p>
 }
 
 // Exports
