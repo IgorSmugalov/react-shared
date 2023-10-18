@@ -1,32 +1,9 @@
 @import '/src/global/styles/variables';
+@import '/src/global/styles/colors';
 @import '/src/shared/utils/css/crop-line-height';
 
-@mixin colors {
-  &__color {
-    &_black {
-      color: $colorBlack;
-    }
-
-    &_white {
-      color: $colorWhite;
-    }
-
-    &_waterBlue {
-      color: $colorWaterBlue;
-    }
-
-    &_success {
-      color: $colorSuccess;
-    }
-
-    &_error {
-      color: $colorError;
-    }
-  }
-}
-
 @mixin align {
-  &__align {
+  &_align {
     &_left {
       text-align: left;
     }
@@ -42,7 +19,7 @@
 }
 
 @mixin transform {
-  &__transform {
+  &_transform {
     &_uppercase {
       text-transform: uppercase;
     }
@@ -62,7 +39,7 @@
 }
 
 @mixin fonts {
-  &__font {
+  &_font {
     &_nunito {
       font-family: $fontNunito;
     }
@@ -74,8 +51,8 @@
 }
 
 @mixin cropLineHeight {
-  @at-root #{&}__cropLineHeight#{&}__font_nunito {
-    // convert to &__cropLineHeight.&__font_nunito, example: heading__cropLineHeight.heading____font_nunito . Make it possible to strictly apply styles when there are two classes
+  @at-root #{&}_cropLineHeight#{&}_font_nunito {
+    // convert to &_cropLineHeight.&_font_nunito, example: heading_cropLineHeight.heading__font_nunito . Make it possible to strictly apply styles when there are two classes
     $topCrop: 4;
     $bottomCrop: 5;
     $cropFontSize: 16;
@@ -83,7 +60,7 @@
     @include textCrop($cropFontSize, $topCrop, $bottomCrop);
   }
 
-  @at-root #{&}__cropLineHeight#{&}__font_rubik {
+  @at-root #{&}_cropLineHeight#{&}_font_rubik {
     // in this case rubik and nunito has similar crop params, left as an example
     $topCrop: 4;
     $bottomCrop: 5;
@@ -103,7 +80,7 @@
   margin: 0;
   line-height: 1.3;
 
-  &__lvl {
+  &_lvl {
     &_1 {
       font-size: clamp(3.4331rem, 2.529rem + 4.5207vw, 6.0325rem);
       font-weight: 300;
@@ -146,7 +123,7 @@
   margin: 0;
   line-height: 1.3;
 
-  &__variant {
+  &_variant {
     &_primary {
       font-size: clamp(1.4063rem, 1.2997rem + 0.5326vw, 1.7125rem);
       font-weight: 300;
