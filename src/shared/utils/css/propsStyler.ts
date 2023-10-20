@@ -1,8 +1,14 @@
 type CssStyles = { readonly [x: string]: string }
-type StyledProps = Record<string, string | number | boolean | undefined>
+type PropTypes = string | number | boolean | undefined
+type StyledProps = Record<string, PropTypes>
+
+const isStringModifier = (value: PropTypes) =>
+  typeof value === 'string' || typeof value === 'number'
+
+const isBooleanModifier = (value: PropTypes) => typeof value === 'boolean'
 
 /**
- * Util for constructing className, working with CSS-Modules, props and BEM-methodology:
+ * Util for constructing className, working with CSS-Modules, props and BEM-like methodology:
  * [BEM]_[modifier]_[modifierValue] or [BEM]_[modifier]
  * Where:
  * [BEM] is 'block' or 'block__element' name
@@ -25,12 +31,20 @@ export function propsStyler(
   let classNames: string = css[rootElement] + ' '
   for (const modifier in styledProps) {
     const modifierValue = styledProps[modifier]
+    // no values for modifier in stylesheet
     if (!modifierValue) continue
-    let className: undefined | string
-    if (typeof modifierValue === 'string' || typeof modifierValue === 'number')
-      className = css[`${rootElement}_${modifier}_${modifierValue}`]
-    else className = css[`${rootElement}_${modifier}`]
-    if (className) classNames += className + ' '
+    if (isStringModifier(modifierValue)) {
+      // if styles passed from className prop
+      if (modifier === 'className') {
+        classNames += modifierValue + ' '
+      } else {
+        // if styles passed from another prop
+        classNames += css[`${rootElement}_${modifier}_${modifierValue}`] + ' '
+      }
+      continue
+    }
+    if (isBooleanModifier(modifierValue))
+      classNames += css[`${rootElement}_${modifier}`] + ' '
   }
   return classNames
 }
