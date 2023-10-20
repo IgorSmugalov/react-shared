@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FC, ReactNode, createContext } from 'react'
+import React, { FC, ReactNode, createContext, forwardRef } from 'react'
 import styles from './typography.module.scss'
 import {
   useBodyProps,
@@ -49,17 +49,40 @@ export interface HeadingProps extends ComposedComponentProps {
   lvl: HeadingLevels
 }
 
-export const Heading: FC<HeadingProps> = (props) => {
-  const { children, ...styledProps } = useHeadingProps(props)
-  const HeadingTag: keyof React.JSX.IntrinsicElements = `h${styledProps.lvl}`
-  return (
-    <HeadingTag className={styler('heading', styledProps)}>
-      {children}
-    </HeadingTag>
-  )
-}
+export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
+  (props, ref) => {
+    const {
+      children,
+      lvl,
+      align,
+      color,
+      cropLineHeight,
+      font,
+      transform,
+      className,
+    } = useHeadingProps(props)
+    const HeadingTag: keyof React.JSX.IntrinsicElements = `h${lvl}`
+    console.log(props)
+    return (
+      <HeadingTag
+        className={styler('heading', {
+          lvl,
+          font,
+          color,
+          align,
+          transform,
+          cropLineHeight,
+          className,
+        })}
+        ref={ref}
+      >
+        {children}
+      </HeadingTag>
+    )
+  }
+)
 
-// SubHeading
+Heading.displayName = 'TypographyHeading'
 
 type SubHeadingVariants = 'primary' | 'secondary'
 
@@ -67,21 +90,70 @@ export interface SubHeadingProps extends ComposedComponentProps {
   variant: SubHeadingVariants
 }
 
-export const SubHeading: FC<SubHeadingProps & TypographyUniversalProps> = (
-  props
-) => {
-  const { children, ...styledProps } = useSubHeadingProps(props)
-  return <p className={styler('subHeading', styledProps)}>{children}</p>
-}
+export const SubHeading = forwardRef<
+  HTMLParagraphElement,
+  SubHeadingProps & TypographyUniversalProps
+>((props, ref) => {
+  const {
+    children,
+    variant,
+    align,
+    color,
+    cropLineHeight,
+    font,
+    transform,
+    className,
+  } = useSubHeadingProps(props)
+  return (
+    <p
+      className={styler('subHeading', {
+        variant,
+        font,
+        color,
+        align,
+        transform,
+        cropLineHeight,
+        className,
+      })}
+      ref={ref}
+    >
+      {children}
+    </p>
+  )
+})
 
-// Text
+SubHeading.displayName = 'TypographySunHeading'
 
-export const Body: FC<ComposedComponentProps> = (props) => {
-  const { children, ...styledProps } = useBodyProps(props)
-  return <p className={styler('body', styledProps)}>{children}</p>
-}
+export const Body = forwardRef<HTMLParagraphElement, ComposedComponentProps>(
+  (props, ref) => {
+    const {
+      children,
+      align,
+      color,
+      cropLineHeight,
+      font,
+      transform,
+      className,
+    } = useBodyProps(props)
+    return (
+      <p
+        className={styler('body', {
+          align,
+          color,
+          cropLineHeight,
+          font,
+          transform,
+          className,
+        })}
+        ref={ref}
+      >
+        {children}
+      </p>
+    )
+  }
+)
 
-// Exports
+Body.displayName = 'TypographyBody'
 
 export const Typography = Object.assign(TypographyRoot, {
   Heading,
