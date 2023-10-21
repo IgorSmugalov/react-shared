@@ -1,0 +1,21 @@
+import { Canvas, Meta } from '@storybook/blocks'
+
+import * as BaseLinkStories from './link-base.stories'
+
+<Meta of={BaseLinkStories} />
+
+# LinkBase component
+
+This is a component for rendering correctly link for Next App Router or native navigation
+
+- **External Link** - default html anchor element used for navigation to pages outside the app
+- **Next Link** - for all other cases
+
+## Usage:
+
+<Canvas of={BaseLinkStories.AsNextJsLink} />
+<Canvas of={BaseLinkStories.AsExternalLink} />
+
+#### Alternative
+
+It is possible to create a smart link component, which based on a regexp, that will determine the type of link to use
