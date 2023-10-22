@@ -28,7 +28,7 @@ export const Demo: Story = {
         <Heading lvl={6}>Heading 6</Heading>
         <SubHeading variant="primary">Subheading 1</SubHeading>
         <SubHeading variant="secondary">Subheading 2</SubHeading>
-        <Body>Body text</Body>
+        <Body as={'p'}>Body text</Body>
       </>
     ),
     align: 'left',
@@ -47,7 +47,7 @@ export const DemoWithContext: Story = {
       <FlexContainer>
         <Heading lvl={1}>Awesome Header</Heading>
         <SubHeading variant="primary">Some additional info</SubHeading>
-        <Body>
+        <Body as={'p'}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
           sapiente iusto labore ipsam sint vitae, odit iure cum voluptate
           laudantium velit accusamus itaque. Architecto exercitationem porro
@@ -77,7 +77,7 @@ export const DemoWithContextAndPropsRedefinition: Story = {
         <Heading lvl={6} align="center" color="success">
           I&apos;m has only fixed align and color
         </Heading>
-        <Body>I&apos;m text without specific props</Body>
+        <Body as={'p'}>I&apos;m text without specific props</Body>
       </FlexContainer>
     </Typography>
   ),

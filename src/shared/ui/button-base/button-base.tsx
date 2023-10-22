@@ -5,7 +5,8 @@ import {
   ReactNode,
 } from 'react'
 import { LinkBase, LinkBaseProps } from '@shared/ui/link-base'
-// import styles from './button-base.module.scss'
+import styles from './button-base.module.scss'
+import { bindPropsStyler } from '@shared/utils'
 
 type ButtonWithTypeProps = ComponentPropsWithRef<'button'> & {
   href?: never
@@ -38,21 +39,32 @@ const isButton = (
 ): props is ButtonWithOnClickProps | ButtonWithTypeProps =>
   'onClick' in props || 'type' in props
 
+const buttonBaseStyles = bindPropsStyler(styles)
+
 export const ButtonBase = forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
   ButtonBaseProps & { children: ReactNode }
 >((props, ref) => {
-  const { className, children, ...rest } = props
+  const { children, className, ...rest } = props
+  const buttonBaseClassName = buttonBaseStyles('buttonBase', { className })
   if (isButton(rest)) {
     return (
-      <button {...rest} ref={ref as ForwardedRef<HTMLButtonElement>}>
+      <button
+        {...rest}
+        className={buttonBaseClassName}
+        ref={ref as ForwardedRef<HTMLButtonElement>}
+      >
         {children}
       </button>
     )
   }
   if (isLink(rest)) {
     return (
-      <LinkBase {...rest} ref={ref as ForwardedRef<HTMLAnchorElement>}>
+      <LinkBase
+        {...rest}
+        className={buttonBaseClassName}
+        ref={ref as ForwardedRef<HTMLAnchorElement>}
+      >
         {children}
       </LinkBase>
     )
