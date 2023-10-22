@@ -15,7 +15,10 @@ const stylelintFormat = (filenames) =>
     .map((f) => path.relative(process.cwd(), f))
     .join(' ')} --fix`
 
+const tscLintCommand = (filenames) => 'tsc --noEmit'
+
 module.exports = {
+  '**/*.(ts|tsx)': [tscLintCommand],
   '**/*.(js|jsx|ts|tsx)': [eslintCommand, prettierFormat],
   '**/*.(css|scss)': [stylelintFormat, prettierFormat],
   '**/*.(md|mdx)': [prettierFormat],
