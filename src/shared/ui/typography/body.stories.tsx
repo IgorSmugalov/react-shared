@@ -9,10 +9,16 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
   },
-  args: { ...bodyDefaultProps, children: 'Awesome body text' },
+  args: { ...bodyDefaultProps, children: 'Lorem ipsum dolor si met' },
 } satisfies Meta<typeof B>
 
 export default meta
 type Story = StoryObj<typeof B>
 
-export const BodyText: Story = {}
+export const ParagraphText: Story = {
+  args: { as: 'p' },
+}
+
+export const PhraseText: Story = {
+  args: { as: 'span' },
+}

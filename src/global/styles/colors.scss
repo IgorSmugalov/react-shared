@@ -2,6 +2,10 @@
 
 @mixin colors {
   &_color {
+    &_inherit {
+      color: inherit;
+    }
+
     &_black {
       color: $colorBlack;
     }

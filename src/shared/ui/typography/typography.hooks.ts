@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import {
+  BodyProps,
   ComposedComponentProps,
   HeadingProps,
   SubHeadingProps,
@@ -39,7 +40,7 @@ export const subHeaderDefaultProps: Partial<SubHeadingProps> = {
 export const useSubHeadingProps = (headingProps: SubHeadingProps) =>
   usePropsMerge(headingProps, subHeaderDefaultProps)
 
-export const bodyDefaultProps: Partial<ComposedComponentProps> = {
+export const bodyDefaultProps: Partial<SubHeadingProps> = {
   align: 'left',
   color: 'black',
   transform: 'none',
@@ -47,5 +48,18 @@ export const bodyDefaultProps: Partial<ComposedComponentProps> = {
   font: 'rubik',
 }
 
-export const useBodyProps = (headingProps: ComposedComponentProps) =>
-  usePropsMerge(headingProps, bodyDefaultProps)
+export const useBodyProps = (bodyProps: BodyProps) =>
+  usePropsMerge(bodyProps, bodyDefaultProps)
+
+export const customTypographyDefaultProps: Partial<BodyProps> = {
+  as: 'p',
+  align: 'left',
+  color: 'black',
+  transform: 'none',
+  cropLineHeight: false,
+  font: 'rubik',
+}
+
+export const useCustomTypographyProps = (
+  customTypographyProps: ComposedComponentProps
+) => usePropsMerge(customTypographyProps, customTypographyDefaultProps)
